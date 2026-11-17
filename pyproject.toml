@@ -1,0 +1,14 @@
+[project]
+name = "E-Commerce-Whatsapp-Agent"
+version = "0.1.0"
+description = "Autonomous WhatsApp AI Agent for E-Commerce with Multi-Tool Calling"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "dotenv==0.9.9",
+    "fastapi==0.163.1",
+    "google-genai==3.4.0",
+    "pydantic-settings==2.16.3",
+    "sqlalchemy==2.1.9",
+    "uvicorn[standard]==0.54.0",
+]
