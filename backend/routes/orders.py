@@ -56,7 +56,7 @@ def checkout_cart(checkout_data: schemas.CheckoutRequest, db: Session = Depends(
         db.add(order_item)
         db.flush()
 
-        order_items_responses.routerend({
+        order_items_responses.append({
             "id": order_item.id,
             "product_id": order_item.product_id,
             "product_name": order_item.product_name,
@@ -99,7 +99,7 @@ def get_all_orders(db: Session = Depends(get_db)):
             }
             for item in order.items
         ]
-        results.routerend({
+        results.append({
             "id": order.id,
             "customer_name": order.customer_name,
             "customer_phone": order.customer_phone,
