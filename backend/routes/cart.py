@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
-from .. import schemas, models
-from ..database import get_db
+import schemas, models
+from database import get_db
 from sqlalchemy.orm import Session
 
 
@@ -134,8 +134,8 @@ def remove_item_from_cart(item_id: int, db: Session = Depends(get_db)):
     return {"message": "Item removed from cart"}
 
 
-@router.delete("/cart/{customer_name}", tags=["Cart"])
-@router.delete("/cart/clear/{customer_name}", tags=["Cart"])
+@router.delete("/{customer_name}", tags=["Cart"])
+@router.delete("/clear/{customer_name}", tags=["Cart"])
 def clear_customer_cart(customer_name: str, db: Session = Depends(get_db)):
     db.query(models.CartItem).filter(models.CartItem.customer_name == customer_name).delete()
     db.commit()
