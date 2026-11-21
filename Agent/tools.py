@@ -1,5 +1,5 @@
 import requests
-from config import settings
+from Agent.config import settings
 from typing import List, Optional
 
 url = settings.BACKEND_URL
