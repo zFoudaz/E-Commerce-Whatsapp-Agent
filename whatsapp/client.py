@@ -4,7 +4,7 @@ from neonize.events import ConnectedEv, MessageEv
 from neonize import extract_text
 from Agent.agent import create_chat, send_message, dump_history
 from whatsapp.utils import init_db, load_history, save_history
-
+from Agent.tools import create_tools
 logger = logging.getLogger(__name__)
 
 client = NewClient("whatsapp/session.db")
@@ -28,7 +28,7 @@ def on_message(client: NewClient, message: MessageEv) -> None:
         return
 
     user_id = source.Sender.User
-    chat = create_chat(load_history(user_id))
+    chat = create_chat(tools = create_tools(user_id), history = load_history(user_id))
 
     try:
         response = send_message(chat, text.strip())

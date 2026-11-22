@@ -71,7 +71,7 @@ def get_customer_cart(customer_name: str, db: Session = Depends(get_db)):
         subtotal = round(item.product.price * item.quantity, 2)
         total_price += subtotal
         total_items += item.quantity
-        items_data.routerend({
+        items_data.append({
             "id": item.id,
             "customer_name": item.customer_name,
             "product_id": item.product_id,

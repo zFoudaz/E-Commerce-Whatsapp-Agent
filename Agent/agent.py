@@ -2,18 +2,17 @@ from google import genai
 from Agent.config import settings
 from google.genai import types
 import Agent.prompts as prompts
-from Agent.tools import tools
 import json
 
 client = genai.Client(api_key=settings.GEMINI_API_KEY)
 
-config = types.GenerateContentConfig(
-    system_instruction= prompts.SYSTEM_PROMPT,
-    tools=tools,
-    temperature=0
-)
 
-def create_chat(history = None):
+def create_chat(tools, history = None):
+    config = types.GenerateContentConfig(
+        system_instruction= prompts.SYSTEM_PROMPT,
+        tools=tools,
+        temperature=0
+    )
     chat = client.chats.create(
         model=settings.GEMINI_MODEL,
         config=config,
