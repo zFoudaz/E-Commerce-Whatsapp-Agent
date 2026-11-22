@@ -1,6 +1,4 @@
-def main():
-    print("Hello from whatsapp-agent!")
+from whatsapp.main import run_whatsapp_client
 
-
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    run_whatsapp_client()

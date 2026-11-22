@@ -3,6 +3,7 @@ from Agent.config import settings
 from google.genai import types
 import Agent.prompts as prompts
 from Agent.tools import tools
+import json
 
 client = genai.Client(api_key=settings.GEMINI_API_KEY)
 
@@ -23,6 +24,10 @@ def create_chat(history = None):
 def send_message(chat, message):
     prompt = message
     return chat.send_message(prompt)
+
+
+def dump_history(self) -> list[dict]:
+    return [json.loads(c.model_dump_json(exclude_none=True)) for c in self.get_history()]
 
 if __name__ == '__main__':
     chat = create_chat()
