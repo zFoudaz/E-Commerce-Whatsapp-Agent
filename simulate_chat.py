@@ -15,4 +15,3 @@ while True:
         break
     response = send_message(chat, message)
     print(f"AI: {response.text}")
-    print([h.model_dump() for h in chat.get_history()])
